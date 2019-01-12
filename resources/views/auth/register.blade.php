@@ -5,7 +5,25 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                {{ __('Register') }}
+
+                <span style="float: right;color: green;" >
+                    <strong>
+                        
+                        @if(Session::has('alert'))
+                            
+                            {{ Session::get('alert') }}
+                            @php
+                            Session::forget('alert');
+                            @endphp
+                            
+                        @endif   
+                        
+                    </strong>
+                </span>
+
+            </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

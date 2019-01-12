@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Session;
+
 class RegisterController extends Controller
 {
     /*
@@ -73,5 +78,12 @@ class RegisterController extends Controller
             'cid_nric' => $data['cid_nric'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+         $this->validator($request->all())->validate();
+         event(new Registered($user = $this->create($request->all())));
+         return back()->withAlert('Success :: Registered successfully.Please login');
     }
 }
