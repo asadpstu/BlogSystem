@@ -5,17 +5,41 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Customer Dashboard</div>
+                <div class="card-header">Customer Home</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                <main role="main" class="container">
+                    @if(!empty($blogList))
+                    @foreach ($blogList as $single)
+                        <div style="margin: 10px;"> 
+                          <span ><strong>{{$single->title}}</strong></span>
+                          <span style="float:right">
+                            <small>Posted by -</small> <small>{{ $single->getBlogPosterName() }}</small> 
+                            <small style="margin-left: 10px;">Date: </small>
+                            <small>
+                             {{ \Carbon\Carbon::parse($single->updated_at)->format('d D, Y')}}
+                            </small>
+                          </span>
+                          <div >
+                            
+                                <?php 
+                                $id = $single->id;
+                                $bloggerId = $single->bloggerId;
+                                ?>
+
+                            {!! mb_substr($single->blogDescription,0,300).'...' !!}
+                           
+                             <a href='/blog/details/{{$id}}/{{$bloggerId}}'> Read More </a> 
+                          </div>
                         </div>
+                        <hr>
+                    @endforeach
+                    {{ $blogList->links() }}
+                    @else
+                    <div style="margin: 10px">
+                    No Post Yet by any Sales Person !
+                    </div>
                     @endif
-
-                    You are logged in!
-                </div>
+                </main>
             </div>
         </div>
     </div>
