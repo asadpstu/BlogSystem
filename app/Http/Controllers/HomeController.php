@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Blog;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
         $loggedInAs = Auth::user()->register_as;
         if($loggedInAs == "Salesman")
         {
-         return view('salesDashboard');   
+          return redirect('/blog');  
+  
         }
         if($loggedInAs == "Customer")
         {

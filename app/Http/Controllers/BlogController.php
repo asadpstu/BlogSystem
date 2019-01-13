@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
@@ -12,9 +14,21 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
     {
-        //
+  
+          $bloggerId = Auth::user()->id;
+          $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
+          if(sizeof($blogList) >= 1)
+          {
+            return view('salesDashboard',compact('blogList'));  
+          }
+          return view('salesDashboard');  
+          
+
     }
 
     /**
@@ -35,7 +49,26 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validation = Validator::make($request->all(), [
+            'title' => 'required|min:10',
+            'blogContent' => 'required',
+        ]);
+
+        if($validation->fails())
+        {
+            return redirect()->back()->withErrors($validation);
+        }
+        else
+        {        
+            $storeBlog = new Blog();
+            $storeBlog->bloggerId = $request->bloggerId;
+            $storeBlog->title = $request->title;
+            $storeBlog->blogDescription = $request->blogContent;
+            $storeBlog->save();
+            return back()->withAlert('Success :: Blog Posted Successfully');
+        }
+
     }
 
     /**
@@ -44,9 +77,12 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        //
+        $bloggerId = Auth::user()->id;
+        $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
+        $blogDetails = Blog::where('id',$id)->first();
+        return view('salesDashboard',compact('blogDetails','blogList'));  
     }
 
     /**
@@ -67,9 +103,21 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request)
     {
-        //
+        try
+            {
+                $user = Blog::findOrFail($request->bloggId);
+                $user->title = $request->title;
+                $user->blogDescription = $request->blogContent;
+                $user->save();
+                return back()->withAlert('Success :: Blog Updated Successfully');
+            }
+            
+        catch(ModelNotFoundException $e)
+            {
+                //Do nothing
+            }
     }
 
     /**
