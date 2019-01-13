@@ -24,9 +24,9 @@
                                 <?php 
                                 $id = $single->id;
                                 $bloggerId = $single->bloggerId;
+                                $short = implode('. ', array_slice(explode('.', $single->blogDescription), 0, 2)) . '.';
                                 ?>
-
-                            {!! mb_substr($single->blogDescription,0,300).'...' !!}
+                                {!! $short !!}
                            
                              <a href='/blog/details/{{$id}}/{{$bloggerId}}'> Read More </a> 
                           </div>

@@ -10,7 +10,7 @@ class Blog extends Model
 
 
     protected $fillable = [
-        'title', 'blogDescription', 'like',''
+        'title', 'blogDescription', 'like'
     ];
 
     protected $hidden = [

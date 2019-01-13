@@ -6,6 +6,8 @@ use App\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use App\Follow;
 
 class BlogController extends Controller
 {
@@ -19,13 +21,22 @@ class BlogController extends Controller
 
     public function index()
     {
-  
-          $bloggerId = Auth::user()->id;
-          $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
-          if(sizeof($blogList) >= 1)
+        $bloggerId = Auth::user()->id;
+        $follower = "";
+        $follower = DB::table('users')
+            ->join('follows', 'users.id', '=', 'follows.customerId')
+            ->select('users.name', 'follows.id','follows.hasRestriction')
+            ->where('blogger',$bloggerId)
+            ->get();
+ 
+        $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
+        if(sizeof($blogList) >= 1)
           {
-            return view('salesDashboard',compact('blogList'));  
+            return view('salesDashboard',compact('blogList','follower'));  
           }
+
+
+
           return view('salesDashboard');  
           
 
@@ -80,9 +91,15 @@ class BlogController extends Controller
     public function show($id)
     {
         $bloggerId = Auth::user()->id;
+        $follower = "";
+        $follower = DB::table('users')
+            ->join('follows', 'users.id', '=', 'follows.customerId')
+            ->select('users.name', 'follows.id','follows.hasRestriction')
+            ->where('blogger',$bloggerId)
+            ->get();
         $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
         $blogDetails = Blog::where('id',$id)->first();
-        return view('salesDashboard',compact('blogDetails','blogList'));  
+        return view('salesDashboard',compact('blogDetails','blogList','follower'));  
     }
 
     /**
@@ -129,5 +146,25 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+    public function unfollow(Request $request)
+    {
+       $id = $request->id;
+       $hasRestriction = $request->hasRestriction;
+       if($hasRestriction == 0)
+       {
+        $value = 1;
+       }
+       else
+       {
+        $value = 0;
+       }
+         $restrict = Follow::findOrFail($id);
+         $restrict->hasRestriction = $value;
+         $restrict->save();
+
+         return "success";
+
     }
 }

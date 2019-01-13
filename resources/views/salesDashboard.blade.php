@@ -92,9 +92,57 @@
                       No Data
                   @endif
             </div>
+
+
+            <div class="card" style="margin-top: 15px; ">
+                <div class="card-header"><strong>People are following you</strong></div>
+                  @if(!empty($follower))
+                      @foreach($follower as $singleUser)
+                      
+                          @if($singleUser->hasRestriction == 1)
+                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-danger" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
+                               {{$singleUser->name }} [Blocked]
+                          </div> 
+                          @else
+                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-warning" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
+                               {{$singleUser->name }} 
+                          </div> 
+                          @endif                          
+                                                
+                      @endforeach  
+                  @else
+                      No Data
+                  @endif
+            </div>            
         </div>
     </div>
 </div>
 
 
 @endsection
+
+<script type="text/javascript">
+  function block(id,hasRestriction){
+
+      $.ajax({   
+                   type:'POST',  
+                   url:"/customer/unfollow",
+                   crossDomain: true,
+                   data:
+                      {
+                        id:id,
+                        hasRestriction:hasRestriction,
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                      },
+                   dataType:"json",
+                     success :function(response) {
+                      console.log(response);
+
+                      },
+                      error: function(e) {
+                        console.log(e.responseText);
+                      } 
+      });
+      window.location.reload();
+  }
+</script>

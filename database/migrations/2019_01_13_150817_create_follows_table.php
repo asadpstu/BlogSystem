@@ -17,6 +17,7 @@ class CreateFollowsTable extends Migration
             $table->increments('id');
             $table->integer('customerId');
             $table->integer('blogger');
+            $table->integer('hasRestriction')->default(0);
             $table->timestamps();
         });
     }
