@@ -34,7 +34,8 @@
   <link href="{{ asset('css-theme/responsive.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
 
 
 </head>
@@ -45,13 +46,13 @@
 
   <header>
     <!-- header-area start -->
-    <div id="sticker" class="header-area">
+    <div id="sticker" class="header-area" >
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12">
 
             <!-- Navigation -->
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default" >
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
@@ -61,10 +62,8 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="/">
-                  <h4 style="color:WHITE;margin-top: 8px;">ABC Company Pte.</h4>
-                  <!-- Uncomment below if you prefer to use an image logo -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
+                <a class="navbar-brand page-scroll sticky-logo" href="/" style="margin-top: 15px;color:white">
+                  <span >ABC Company Pte.</span>
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,7 +75,10 @@
                 
                   @auth
                     <li class="active">
-                       <a class="page-scroll" href="{{ url('/home') }}">Home</a>
+                       <a class="page-scroll" href="{{ url('/') }}">Home</a>
+                    </li>
+                    <li class="active">
+                       <a class="page-scroll" href="{{ url('/home') }}">Dashboard</a>
                     </li>
                     @else
                     <li class="active">
@@ -122,11 +124,11 @@
               <div class="slider-content">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">The Best Business Information </h2>
+                  <h3 class="title1" style="color:white">The Best Business Information </h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">We're In The Business Of Helping You Start Your Business</h1>
+                  <h3 class="title1" style="color:white">We're In The Business Of Helping You Start Your Business</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -147,11 +149,11 @@
               <div class="slider-content text-center">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">The Best Business Information </h2>
+                  <h3 class="title1" style="color:white">The Best Business Information </h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">We're In The Business Of Get Quality Business Service</h1>
+                  <h3 class="title1" style="color:white">We're In The Business Of Get Quality Business Service</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -172,11 +174,11 @@
               <div class="slider-content">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">The Best business Information </h2>
+                  <h3 class="title1" style="color:white">The Best business Information </h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Helping Business Security  & Peace of Mind for Your Family</h1>
+                  <h3 class="title1" style="color:white">Helping Business Security  & Peace of Mind for Your Family</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
