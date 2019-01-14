@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Blog;
 use App\Follow;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $loggedInAs = Auth::user()->register_as;
+        $customerId = Auth::user()->id;
         if($loggedInAs == "Salesman")
         {
           return redirect('/blog');  
@@ -34,7 +36,12 @@ class HomeController extends Controller
         }
         if($loggedInAs == "Customer")
         {
-          $blogList = Blog::paginate(5);
+          $findRestrictBlogger = DB::select( DB::raw("SELECT GROUP_CONCAT(DISTINCT blogger ORDER BY id) as 'all' FROM follows where customerId = $customerId and hasRestriction=1 ;") );
+          
+          $data = $findRestrictBlogger[0]->all;
+          $id_list = "[".$data."]";
+          $RestrictBlogger = json_decode($id_list, true);
+          $blogList = Blog::whereNotIn('bloggerId', $RestrictBlogger)->paginate(5);
           if(sizeof($blogList) >= 1)
           {
             return view('customerDashboard',compact('blogList')); 
@@ -49,6 +56,11 @@ class HomeController extends Controller
     {
         $blogList = Blog::where('bloggerId',$bloggerId)->where('id','!=',$id)->select('id','title','bloggerId')->orderBy('id','DESC')->get();
         $blogDetails = Blog::where('id',$id)->first();
+        $initial = $blogDetails->like;
+        $updateView = Blog::findOrFail($id);
+                $updateView->like = $initial + 1;
+                $updateView->save();
+
         $checkFollow = Follow::where('customerId',Auth::user()->id)->where('blogger',$bloggerId)->count();
         if($checkFollow == 1)
         {

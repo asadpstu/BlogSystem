@@ -37,7 +37,7 @@
                             @if(!empty($blogDetails))
                             <strong>{!! $blogDetails->title !!} </strong> 
                             @endif 
-                            <span style="float: right;"><i class="fa fa-thumbs-up" style="font-size:20px;color:blue;"></i><span>{{ $blogDetails->like }}</span></span>                           
+                            <span style="float: right;"><i class="fa fa-eye" style="font-size:20px;color:blue;"></i><span>&nbsp;{{ $blogDetails->like + 1 }}</span></span>                           
                           </div>
                             
                                
