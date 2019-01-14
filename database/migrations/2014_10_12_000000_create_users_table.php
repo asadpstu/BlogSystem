@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('register_as',10);
             $table->string('cid_nric',50);
+            $table->string('api_token',25)->unique();
             $table->rememberToken();
             $table->timestamps();
         });

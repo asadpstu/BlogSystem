@@ -80,6 +80,11 @@
                     <li class="active">
                        <a class="page-scroll" href="{{ url('/home') }}">Dashboard</a>
                     </li>
+                      @if(Auth::user()->register_as == 'Salesman')
+                        <li class="active">                      
+                          <a class="page-scroll" href="{{ url('/api') }}">Api</a>
+                        </li>
+                      @endif
                     @else
                     <li class="active">
                        <a class="page-scroll" href="{{ route('login') }}">Login</a>

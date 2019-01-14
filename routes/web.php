@@ -27,3 +27,4 @@ Route::get('/blog/details/{id}/{bloggerId}', 'HomeController@show');
 Route::post('/salesperson/follow', 'HomeController@follow');
 Route::post('/salesperson/unfollow', 'HomeController@unfollow');
 Route::post('/customer/unfollow', 'BlogController@unfollow');
+Route::get('/api', 'BlogController@api');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Blog;
 use App\Follow;
+use App\BlogView;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -70,6 +71,20 @@ class HomeController extends Controller
         {
             $follow = "FALSE";
         }
+        $checkViewAlready = BlogView::where('customerId',Auth::user()->id)->where('blogId',$id)->count();
+        if($checkViewAlready == '1')
+        {
+          //Do Nothing
+        }
+        else
+        {
+          $addView = new BlogView();
+          $addView->blogId = $id;
+          $addView->customerId = Auth::user()->id;
+          $addView->save();
+        }
+
+
         return view('blogDetails',compact('blogDetails','blogList','follow')); 
     }
 

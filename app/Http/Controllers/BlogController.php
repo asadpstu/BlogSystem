@@ -167,4 +167,12 @@ class BlogController extends Controller
          return "success";
 
     }
+
+
+    public function api()
+    {
+        return view('apiDashboard');         
+    }
+
+
 }
