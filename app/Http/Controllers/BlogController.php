@@ -29,10 +29,13 @@ class BlogController extends Controller
             ->where('blogger',$bloggerId)
             ->get();
  
+        $blogList ="";
         $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
-        if(sizeof($blogList) >= 1)
+        $blogListOtherAuthor = "";
+        $blogListOtherAuthor = Blog::where('bloggerId','!=', $bloggerId)->paginate(5);
+        if(sizeof($blogList) >= 1 || sizeof($blogListOtherAuthor))
           {
-            return view('salesDashboard',compact('blogList','follower'));  
+            return view('salesDashboard',compact('blogList','blogListOtherAuthor','follower'));  
           }
 
 
@@ -99,7 +102,11 @@ class BlogController extends Controller
             ->get();
         $blogList = Blog::where('bloggerId',$bloggerId)->select('id','title')->orderBy('id','DESC')->get();
         $blogDetails = Blog::where('id',$id)->first();
-        return view('salesDashboard',compact('blogDetails','blogList','follower'));  
+
+        $blogListOtherAuthor = "";
+        $blogListOtherAuthor = Blog::where('bloggerId','!=', $bloggerId)->paginate(5);
+
+        return view('salesDashboard',compact('blogDetails','blogList','follower','blogListOtherAuthor'));  
     }
 
     /**

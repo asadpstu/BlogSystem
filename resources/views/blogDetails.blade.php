@@ -57,7 +57,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
-                  <h6>This blog is posted by -</h6>
+                  <h6>All Blog's by - </h6>
                   @if(!empty($blogDetails))
                     <strong>  {!! $blogDetails->getBlogPosterName() !!} </strong>  
                   @endif 
@@ -69,6 +69,7 @@
                   
                 </div>
                   @if(!empty($blogList))
+
                       @foreach($blogList as $single)
 
                           <div style="margin-left:15px;margin-top: 5px;">

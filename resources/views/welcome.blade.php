@@ -129,11 +129,11 @@
               <div class="slider-content">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h3 class="title1" style="color:white">The Best Business Information </h3>
+                  <h3 class="title1" style="color:white"></h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h3 class="title1" style="color:white">We're In The Business Of Helping You Start Your Business</h3>
+                  <h3 class="title1" style="color:white">Full Stack Engineer</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -154,11 +154,11 @@
               <div class="slider-content text-center">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h3 class="title1" style="color:white">The Best Business Information </h3>
+                  <h3 class="title1" style="color:white"></h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h3 class="title1" style="color:white">We're In The Business Of Get Quality Business Service</h3>
+                  <h3 class="title1" style="color:white">Front End Design</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -179,11 +179,11 @@
               <div class="slider-content">
                 <!-- layer 1 -->
                 <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h3 class="title1" style="color:white">The Best business Information </h3>
+                  <h3 class="title1" style="color:white"></h3>
                 </div>
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h3 class="title1" style="color:white">Helping Business Security  & Peace of Mind for Your Family</h3>
+                  <h3 class="title1" style="color:white">Backend and Api Developement</h3>
                 </div>
                 <!-- layer 3 -->
                 <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
@@ -213,10 +213,10 @@
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h4>ABC Company Pte.</h4>
+                  <strong>Abc Company Pte.</strong>
                 </div>
 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <p>ABC company wants to create a simple blogging application to enable fun interaction/connection between their salesman and customers.This would provide enable them to have good relationship with their customers and might result in an increase in revenue over the long run.</p>
                 <div class="footer-icons">
                   <ul>
                     <li>
@@ -240,14 +240,16 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>information</h4>
+                <strong>Information</strong>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                  Develop the simple blogging application
                 </p>
                 <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> contact@example.com</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
+                  <p><span>Task 1. </span>Problem Understanding</p>
+                  <p><span>Task 2. </span>Project raw Sketch</p>
+                  <p><span>Task 3. </span>Database Design</p>
+                  <p><span>Task 4. </span>Front Design</p>
+                  <p><span>Task 5. </span>Backend Developemnt</p>
                 </div>
               </div>
             </div>
@@ -256,14 +258,13 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>Instagram</h4>
+                <strong>Gallery</strong>
                 <div class="flicker-img">
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/1.jpg')}}" alt=""></a>
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/2.jpg')}}" alt=""></a>
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/3.jpg')}}" alt=""></a>
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/4.jpg')}}" alt=""></a>
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/5.jpg')}}" alt=""></a>
-                  <a href="#"><img src="{{ asset('img-theme/portfolio/6.jpg')}}" alt=""></a>
+                  <a href="#"><img src="{{ asset('images/ezgif.com-video-to-gif.gif')}}" alt=""></a>
+                  <a href="#"><img src="{{ asset('images/commonfollower.gif')}}" alt=""></a>
+                  <a href="#"><img src="{{ asset('images/3rd.gif')}}" alt=""></a>
+                  <a href="#"><img src="{{ asset('images/4th.gif')}}" alt=""></a>
+
                 </div>
               </div>
             </div>
