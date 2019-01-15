@@ -165,28 +165,3 @@
 
 @endsection
 
-<script type="text/javascript">
-  function block(id,hasRestriction){
-
-      $.ajax({   
-                   type:'POST',  
-                   url:"/customer/unfollow",
-                   crossDomain: true,
-                   data:
-                      {
-                        id:id,
-                        hasRestriction:hasRestriction,
-                        _token: $('meta[name="csrf-token"]').attr('content'),
-                      },
-                   dataType:"json",
-                     success :function(response) {
-                      console.log(response);
-
-                      },
-                      error: function(e) {
-                        console.log(e.responseText);
-                      } 
-      });
-      window.location.reload();
-  }
-</script>
