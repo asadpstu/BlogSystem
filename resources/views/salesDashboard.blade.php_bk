@@ -72,8 +72,54 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header"><strong>Blogs Posted By You-</strong></div>
+                  @if(!empty($blogList))
+                      @foreach($blogList as $single)
+                      @if(Session::has('alert') && ++$i == '1')
+                          <div style="margin-left:15px;margin-top: 5px;font-weight: bolder;!important;">
+                              <a href="/blog/post/{{ $single->id }}" > {{$i .". ". $single->title }} </a>
+                          </div>
+                      @else
+                          <div style="margin-left:15px;margin-top: 5px;">
+                              <a href="/blog/post/{{ $single->id }}"> {{++$i .". ". $single->title }} </a>
+                          </div> 
+                      @endif                             
+                      @endforeach  
+                  @else
+                      No Data
+                  @endif
+            </div>
 
-            <div class="card" style="margin-top: 10px">
+
+            <div class="card" style="margin-top: 15px; ">
+                <div class="card-header"><strong>People are following you</strong></div>
+                  @if(!empty($follower))
+                      @foreach($follower as $singleUser)
+                      
+                          @if($singleUser->hasRestriction == 1)
+                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-danger" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
+                               {{$singleUser->name }} [Blocked]
+                          </div> 
+                          @else
+                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-warning" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
+                               {{$singleUser->name }} 
+                          </div> 
+                          @endif                          
+                                                
+                      @endforeach  
+                  @else
+                      No Data
+                  @endif
+            </div>            
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 10px;">
+      <div class="col-md-9">
+            <div class="card">
                 <div class="card-header">Posts by Others</div>
 
                 <main role="main" class="container">
@@ -110,58 +156,10 @@
                     @endif
                 </main>
             </div>
-
-
-
         </div>
         <div class="col-md-3">
-
-            <div class="card" style="margin-bottom:10px ">
-                <div class="card-header"><strong>Follower List :</strong></div>
-                  @if(!empty($follower))
-                      @foreach($follower as $singleUser)
-                      
-                          @if($singleUser->hasRestriction == 1)
-                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-danger" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
-                               {{$singleUser->name }} [Blocked]
-                          </div> 
-                          @else
-                          <div  id="restrict_{{$singleUser->id }}" class="btn btn-warning" style="margin: 3px;" onclick="block({{$singleUser->id }},{{$singleUser->hasRestriction }})">
-                               {{$singleUser->name }} 
-                          </div> 
-                          @endif                          
-                                                
-                      @endforeach  
-                  @else
-                      No Data
-                  @endif
-            </div>
-
-            <div class="card">
-                <div class="card-header"><strong>Blogs Posted By You-</strong></div>
-                  @if(!empty($blogList))
-                      @foreach($blogList as $single)
-                      @if(Session::has('alert') && ++$i == '1')
-                          <div style="margin-left:15px;margin-top: 5px;font-weight: bolder;!important;">
-                              <a href="/blog/post/{{ $single->id }}" > {{$i .". ". $single->title }} </a>
-                          </div>
-                      @else
-                          <div style="margin-left:15px;margin-top: 5px;">
-                              <a href="/blog/post/{{ $single->id }}"> {{++$i .". ". $single->title }} </a>
-                          </div> 
-                      @endif                             
-                      @endforeach  
-                  @else
-                      No Data
-                  @endif
-            </div>
-
-
-            
         </div>
     </div>
-
-
 </div>
 
 

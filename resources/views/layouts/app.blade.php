@@ -12,6 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/logic.js') }}"></script>
+     <link href="{{ asset('img-theme/favicon.png')}}" rel="icon">
+     <link href="{{ asset('img-theme/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
