@@ -74,15 +74,15 @@
             @if (Route::has('login'))
                 
                   @auth
-                    <li class="active">
+<!--                     <li class="active">
                        <a class="page-scroll" href="{{ url('/') }}">Home</a>
-                    </li>
+                    </li> -->
                     <li class="active">
                        <a class="page-scroll" href="{{ url('/home') }}">Dashboard</a>
                     </li>
                       @if(Auth::user()->register_as == 'Salesman')
                         <li class="active">                      
-                          <a class="page-scroll" href="{{ url('/api') }}">Api</a>
+                          <a class="page-scroll" href="{{ url('/api') }}">Api Dashboard</a>
                         </li>
                       @endif
                     @else
